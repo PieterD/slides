@@ -9,7 +9,7 @@ pieter@binky.org.uk
 
 * What's on the menu today
 
-- (30m) Language overview, history and ecosystem
+- (30m) History, feature buzz-word overview
 - (30m) Basic syntax, Development Environment: GOROOT, GOPATH, build, fmr, get
 - (60m) Type system, Interfaces
 - (60m) Concurrency, closures, defer, panic, recover
@@ -83,9 +83,9 @@ d82b11e - (27 years ago) last-minute fix: convert to ANSI C - Brian Kernighan
 * Where it's being used
 
 - Google (App Engine, Kubernetes)
-- DotCloud (Docker)
+- DotCloud (Docker, Packer)
 - Heroku (Doozer)
-- CoreOS (Etcd)
+- CoreOS (Etcd, Raft)
 - Bol.com, Iron.io, Bit.ly, Canonical, CloudFlare, Dropbox, Getty, Github, pool.ntp.org, Tumblr, Soundcloud, Twitch, Zynga Apcera, MongoDB, Wercker
 
 https://github.com/golang/go/wiki/GoUsers
@@ -95,9 +95,9 @@ https://github.com/golang/go/wiki/GoUsers
 
 What it does well:
 
+- Paas & Iaas
 - Servers
 - Tools
-- Paas & Iaas
 
 What it doesn't do so well:
 
@@ -107,3 +107,6 @@ What it doesn't do so well:
 - Graphical user interface
 
 
+* Basic syntax, Development Environment
+
+.play hello_world.go

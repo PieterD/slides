@@ -8,8 +8,7 @@ pieter@binky.org.uk
 
 
 * What's on the menu today
-
-- (30m) Language overview, ecosystem
+- (30m) Language overview, history and ecosystem
 - (30m) Basic syntax, Development Environment: GOROOT, GOPATH, build, fmr, get
 - (60m) Type system, Interfaces
 - (60m) Concurrency, closures, defer, panic, recover
@@ -21,4 +20,57 @@ pieter@binky.org.uk
 
 If we have time, Runtime Reflection.
 Not covered: cgo.
+
+
+* Language overview & ecosystem
+* A little bit of history
+Started in 2007 as a 20% project at Google:
+
+- Ken Thompson (B, Unix, Plan 9, Regular Expressions, Ed, UTF-8)
+- Rob Pike (Plan 9, Acme, Blit, Sam, UTF-8)
+- Robert Griesemer
+
+Joined in 2008:
+
+- Ian Lance Taylor (Binutils, GCC)
+- Russ Cox (Plan 9)
+
+Open Sourced in November 10, 2009
+
+- Andrew Gerrand
+- Brad Fitzpatrick (Livejournal, memcached, OpenID, Camlistore)
+
+Go 1.0 in March 2012
+
+* The First Commits
+7d7c6a9 - (43 years ago) hello, world - Brian Kernighan
+0bb0b61 - (41 years ago) convert to C - Brian Kernighan
+0744ac9 - (27 years ago) convert to Draft-Proposed ANSI C - Brian Kernighan
+d82b11e - (27 years ago) last-minute fix: convert to ANSI C - Brian Kernighan
+18c5b48 - (7 years ago) Go spec starting point. - Robert Griesemer
+
+* So what's it for?
+What it does well:
+
+- Servers
+- Tools
+
+What it doesn't do so well:
+
+- Scientific programming
+- Real-time programming
+- Operating systems
+- Graphical user interface
+ 
+* Features
+
+- Compiled
+- Strong, static typing
+- Memory-safe
+- Concurrent
+- Garbage collected
+- High-quality standard library
+- Full run-time reflection
+- Simple build system
+- Excellent tools
 

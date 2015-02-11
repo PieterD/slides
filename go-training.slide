@@ -8,6 +8,7 @@ pieter@binky.org.uk
 
 
 * What's on the menu today
+
 - (30m) Language overview, history and ecosystem
 - (30m) Basic syntax, Development Environment: GOROOT, GOPATH, build, fmr, get
 - (60m) Type system, Interfaces
@@ -23,7 +24,9 @@ Not covered: cgo.
 
 
 * Language overview & ecosystem
+
 * A little bit of history
+
 Started in 2007 as a 20% project at Google:
 
 - Ken Thompson (B, Unix, Plan 9, Regular Expressions, Ed, UTF-8)
@@ -42,18 +45,59 @@ Open Sourced in November 10, 2009
 
 Go 1.0 in March 2012
 
+
 * The First Commits
+
 7d7c6a9 - (43 years ago) hello, world - Brian Kernighan
 0bb0b61 - (41 years ago) convert to C - Brian Kernighan
 0744ac9 - (27 years ago) convert to Draft-Proposed ANSI C - Brian Kernighan
 d82b11e - (27 years ago) last-minute fix: convert to ANSI C - Brian Kernighan
 18c5b48 - (7 years ago) Go spec starting point. - Robert Griesemer
+ 
+
+* Feature (buzz-word bingo)
+
+- Compiled (i386, x64, Arm) (Linux, OS X, FreeBSD, Windows, NaCl)
+- Very simple type system, strong & static
+- Memory-safe
+- Concurrent
+- Closures
+- Garbage collected
+- High-quality standard library
+- Full run-time reflection
+- Simple build system
+- Excellent tools
+- Compiles very fast
+
+
+* Not Features (buzz-word bingo 2: electric boogaloo)
+
+- Generics
+- Parametric polymorphism
+- Operator overloading
+- Function overloading
+- Exceptions (sort of)
+- Inheritance
+
+
+* Where it's being used
+
+- Google (App Engine, Kubernetes)
+- DotCloud (Docker)
+- Heroku (Doozer)
+- CoreOS (Etcd)
+- Bol.com, Iron.io, Bit.ly, Canonical, CloudFlare, Dropbox, Getty, Github, pool.ntp.org, Tumblr, Soundcloud, Twitch, Zynga Apcera, MongoDB, Wercker
+
+https://github.com/golang/go/wiki/GoUsers
+
 
 * So what's it for?
+
 What it does well:
 
 - Servers
 - Tools
+- Paas & Iaas
 
 What it doesn't do so well:
 
@@ -61,16 +105,5 @@ What it doesn't do so well:
 - Real-time programming
 - Operating systems
 - Graphical user interface
- 
-* Features
 
-- Compiled
-- Strong, static typing
-- Memory-safe
-- Concurrent
-- Garbage collected
-- High-quality standard library
-- Full run-time reflection
-- Simple build system
-- Excellent tools
 

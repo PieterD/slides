@@ -1,0 +1,24 @@
+The Go Programming Language
+A modern systems language
+20:17 11 Feb 2015
+
+Pieter Droogendijk
+Developer, CRI
+pieter@binky.org.uk
+
+
+* What's on the menu today
+
+- (30m) Language overview, ecosystem
+- (30m) Basic syntax, Development Environment: GOROOT, GOPATH, build, fmr, get
+- (60m) Type system, Interfaces
+- (60m) Concurrency, closures, defer, panic, recover
+- (30m) Lunch?
+- (30m) Documentation: How to make it, where to find it: go doc, standard library
+- (30m) Testing & Benchmarking
+- (60m) Tools: Coverage, generate, profiling, formatting, build tags, cross compiling
+- (60m) Using it all: build a web server
+
+If we have time, Runtime Reflection.
+Not covered: cgo.
+

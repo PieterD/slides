@@ -127,7 +127,7 @@ Directory structure:
     hello_world
   pkg/
     linux_amd64/github.com/PieterD/slides
-      bites.a
+      reverse.a
   src/
     github.com/PieterD/slides/hello_world/
       code.go

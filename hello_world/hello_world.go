@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	//"github.com/PieterD/slides/chunky"
+
+	"github.com/PieterD/slides/reverse"
 )
 
 func main() {
-	greeting := "こんにちは世界"
-	fmt.Println(greeting)
+	greeting := "界世はちにんこ"
+	fmt.Println(reverse.Reverse(greeting))
 }

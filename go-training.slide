@@ -109,21 +109,32 @@ What it doesn't do so well:
 
 * Basic syntax and the development environment
 
-* The go tool, the workspace & GOPATH
+* The go tool, the workspace, GOROOT & GOPATH
 
-GOPATH=$HOME/golib:$HOME/git/go:$HOME/work
+Global configuration:
+
+  export GOROOT=$HOME/go
+  export GOPATH=$HOME/git/go
+  export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+Get example project:
+
+  go get github.com/PieterD/slides/hello_world
+
+Directory structure:
 
   bin/
     hello_world
   pkg/
-    linux_amd64/github.com/PieterD/
+    linux_amd64/github.com/PieterD/slides
       bites.a
   src/
     github.com/PieterD/slides/hello_world/
-      hello_world.go
-    github.com/PieterD/slides/chunky/
-      chunky.go
+      code.go
+    github.com/PieterD/slides/reverse/
+      reverse.go
 
 * Hello, world!
 
-.play hello_world/hello_world.go
+.play hello_world/code.go
+.code reverse/reverse.go

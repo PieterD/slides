@@ -7,6 +7,6 @@ import (
 )
 
 func main() {
-	greeting := "界世はちにんこ"
+	greeting := "!dlrow ,olleH"
 	fmt.Println(reverse.Reverse(greeting))
 }

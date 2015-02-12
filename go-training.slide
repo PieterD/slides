@@ -23,7 +23,7 @@ If we have time, Runtime Reflection.
 Not covered: cgo.
 
 
-* Language overview & ecosystem
+* Language history & overview
 
 * A little bit of history
 
@@ -107,6 +107,23 @@ What it doesn't do so well:
 - Graphical user interface
 
 
-* Basic syntax, Development Environment
+* Basic syntax and the development environment
 
-.play hello_world.go
+* The go tool, the workspace & GOPATH
+
+GOPATH=$HOME/golib:$HOME/git/go:$HOME/work
+
+  bin/
+    hello_world
+  pkg/
+    linux_amd64/github.com/PieterD/
+      bites.a
+  src/
+    github.com/PieterD/slides/hello_world/
+      hello_world.go
+    github.com/PieterD/slides/chunky/
+      chunky.go
+
+* Hello, world!
+
+.play hello_world/hello_world.go

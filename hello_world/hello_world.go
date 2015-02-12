@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	//"github.com/PieterD/slides/chunky"
+)
 
 func main() {
 	greeting := "こんにちは世界"

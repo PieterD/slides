@@ -10,7 +10,7 @@ pieter@binky.org.uk
 * What's on the menu today
 
 - (30m) History, feature buzz-word overview
-- (30m) Basic syntax, Development Environment: GOROOT, GOPATH, build, fmr, get
+- (30m) Basic syntax, Development Environment: GOROOT, GOPATH, build, fmt, get
 - (60m) Type system, Interfaces
 - (60m) Concurrency, closures, defer, panic, recover
 - (30m) Lunch?

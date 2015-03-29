@@ -7,7 +7,9 @@ Developer, CRI
 pieter@binky.org.uk
 
 
-* Regular Expressions
+* Overview & History
+
+* Regular Expressions: what are they?
 
   ( ( ( [^"/#]+
         ( " ( [^\\"]+ ( [\\] . )? )+ "
@@ -33,12 +35,6 @@ pieter@binky.org.uk
     )
   )?
 
-* Overview & History
-
-* What are Regular Expressions?
-
-- Text processing
-
 * Some history
 
 - Stephen Cole Kleene (1957): Mathematical framework, Regular Sets
@@ -48,4 +44,64 @@ pieter@binky.org.uk
 - Henry Spencer (1986): Perl, Tcl, PostgreSQL
 - POSIX.2 (1992)
 - Philip Hazel (1997): PCRE (PHP, Apache http)
+- Russ Cox (2010): RE2 (Google)
+- Eclipse, notepad++, IntelliJ, every programming language.
+- Many flavours of regex, many implementations.
+
+* Minimal Extended Regex Syntax
+
+* Quick Reference: Features
+
+Atoms
+
+  .             any character at all
+  [xyz]         x, y or z
+  [^xyz]        any character, but not x, y or z
+
+Qualifiers
+
+  ?             0 or 1
+  *             0 or more
+  +             1 or more
+  {n,m}         between n and m inclusive
+
+Compositors
+
+  xy            standard concatenation
+  x|y           x or y
+
+Anchors
+
+  ^             start of string
+  $             end of string
+
+* Quick Reference: Precedence
+
+Precedence
+
+  \x            escaped character
+  []            bracket expression
+  ()            grouping
+  * + ? {n,m}   qualifier
+                concatenation
+  ^ $           anchoring
+  |             alternation
+
+Character classes
+
+  [[:ascii:]]   Any ascii character
+  [[:alpha:]]   Upper or lowercase alphanumeric characters
+  [[:digit:]]   Numeric digit
+  [[:xdigit:]]  Hex digit; [[:digit:]] or [a-f] or [A-F]
+  [[:alnum:]]   [[:alpha:]] or [[:digit:]]
+  [[:word:]]    [[:alnum:]] or _
+  [[:cntrl:]]   Control character
+  [[:blank:]]   Space or tab
+  [[:space:]]   Any whitespace
+  [[:graph:]]   All printable characters
+  [[:lower:]]   Lowercase alpha
+  [[:upper:]]   Uppercase alpha
+  
+
+
 

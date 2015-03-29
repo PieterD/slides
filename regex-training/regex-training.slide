@@ -1,0 +1,51 @@
+Regular Expressions
+The swiss army knife of text processing
+18:00 01 Apr 2015
+
+Pieter Droogendijk
+Developer, CRI
+pieter@binky.org.uk
+
+
+* Regular Expressions
+
+  ( ( ( [^"/#]+
+        ( " ( [^\\"]+ ( [\\] . )? )+ "
+        | [/][^/*]
+        | [#] ( $ | [^i] | i[^f] | if[^ ] | if[ ][^0] | if[ ]0[^\n] )
+        )?
+      )+
+    )
+  )
+  ( ^[#]if[ ]0\n
+    ( ( $
+      | [^#]
+      | [#] ( [^e] | e[^n] | en[^d] | end[^i] | endi[^f] | endif[^\n] )
+      )
+      [^\n]*\n
+    )+
+    ^[#]endif$\n?
+  | /
+    ( /.*$
+    | [*]
+      ( [^*]+ [*] [^/] )+
+      [^*]+ [*] [/]
+    )
+  )?
+
+* Overview & History
+
+* What are Regular Expressions?
+
+- Text processing
+
+* Some history
+
+- Stephen Cole Kleene (1957): Mathematical framework, Regular Sets
+- SNOBOL4 (1967)
+- Ken Thompson (1968): QED
+- Bell Labs (1970): ed, sed, awk, vi, emacs
+- Henry Spencer (1986): Perl, Tcl, PostgreSQL
+- POSIX.2 (1992)
+- Philip Hazel (1997): PCRE (PHP, Apache http)
+

@@ -1,0 +1,47 @@
+### Regular text, strings, false comment starts
+( ( ( [^"/#]+      # regular text
+      ( "          # string
+        ( [^\\"]+
+          ( [\\] .
+          )?
+        )+
+        "
+      | [/][^/*]   # false // or /*
+      | [#]        # false #if 0
+        ( $
+        | [^i]
+        | i[^f]
+        | if[^ ]
+        | if[ ][^0]
+        | if[ ]0[^\n]
+        )
+      )?
+    )+
+  )
+)
+### All comment types
+( ^[#]if[ ]0\n    # #if 0
+  ( ( $           # empty line
+    | [^#]        # not #
+    | [#]         # got #, get bad #endif
+      ( [^e]
+      | e[^n]
+      | en[^d]
+      | end[^i]
+      | endi[^f]
+      | endif[^\n]
+      )
+    )
+    [^\n]*\n      # get to the end of the line
+  )+
+  ^[#]endif$\n?   # true #endif
+| /
+  ( /.*$          # // comment
+  | [*]           # /* comment */
+    ( [^*]+       # Entire comment Except for the end
+      [*] [^/]    # Including false endings
+    )+
+    [^*]+ [*] [/] # Remainder of the comment plus ending
+  )
+)?                # Comments are optional
+

@@ -62,44 +62,65 @@ Modifiers:
   m    Multiline: ^ and $ match beginning and start of line.
   x    eXtended:  don't match spaces, allow comments
 
-* Basic usage
+* Atoms and Concatenation
 
 Basic text matches as basic text
 
-  hello, world!
+  abc                 abc
 
 Dot matches as any character
 
-  .ello, world.
+  ab.                 aba, abb, abc, abd, abQ, ab0, ab!, ...
 
 Escape special characters
 
-  .ello, world\.
+  abc\.               abc.
 
-* Bracket expressions
+Special characters: | . \ { ( ? * + ^ $
+
+* Atoms and Concatenation: Bracket expressions
 
 Bracket expression matches any included character
 
-  [hH]ello, world[?!.]
+  ab[cde]             abc, abd, abe
 
 Inverted bracked expression matches any character not included
 
-  [^_]ello, world[^?!_]
+  [^abcde]bc          fbc, gbc, hbc, !bc, Qbc, ...
+                  NOT abc, bbc, cbc, dbc, ebc
 
 Character classes
 
-  [[:lower:]]
-  [[:upper:]]
+  abc[[:lower:]]      abca, abcb, abcc, abcd, ...
+                  NOT abcA, abcB, abcC, abcD, ...
+  [[:upper:]]         A, B, C, D, E, F, G, H, ...
+                  NOT a, b, c, d, e, f, g, h, ...
 
 Range
 
-  [a-z]
-  [abcdef0-9]
-  [abc012-]
+  [a-z]               Only a through z, lowercase.
+  [abcdef0-9]         a, b, c, d, e, f, or 0 through 9.
+  [abc012-]           a, b, c, 0, 1, 2, -
 
-* Qualifiers
+* Atoms and Concatenation: Qualifiers
 
+Kleene Star: 0 or more
 
+  ab*c                ac, abc, abbc, abbbc, abbbbc, ...
+
+Plus: 1 or more
+
+  ab+c                abc, abbc, abbbc, abbbbc, ...
+
+Questionmark: 0 or 1
+
+  ab?c               ac, abc
+
+Interval expression: range
+
+  ab{2}c              abbc
+  ab{2,4}c            abbc, abbbc, abbbbc
+  ab{3,}c             abbbc, abbbbc, abbbbbc, ...
 
 * Quick Reference: Features
 

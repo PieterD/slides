@@ -50,6 +50,57 @@ pieter@binky.org.uk
 
 * Minimal Extended Regex Syntax
 
+* Playing around with regular expressions
+
+.link https://regex101.com/ https://regex101.com
+
+Python is best; no delimiter.
+
+Modifiers:
+
+  g    Global:    all matches, not just one.
+  m    Multiline: ^ and $ match beginning and start of line.
+  x    eXtended:  don't match spaces, allow comments
+
+* Basic usage
+
+Basic text matches as basic text
+
+  hello, world!
+
+Dot matches as any character
+
+  .ello, world.
+
+Escape special characters
+
+  .ello, world\.
+
+* Bracket expressions
+
+Bracket expression matches any included character
+
+  [hH]ello, world[?!.]
+
+Inverted bracked expression matches any character not included
+
+  [^_]ello, world[^?!_]
+
+Character classes
+
+  [[:lower:]]
+  [[:upper:]]
+
+Range
+
+  [a-z]
+  [abcdef0-9]
+  [abc012-]
+
+* Qualifiers
+
+
+
 * Quick Reference: Features
 
 Atoms
@@ -75,7 +126,7 @@ Anchors
   ^             start of string
   $             end of string
 
-* Quick Reference: Precedence
+* Quick Reference: Precedence and Character classes
 
 Precedence
 

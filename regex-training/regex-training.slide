@@ -78,7 +78,7 @@ Escape special characters
 
 Special characters: | . \ { ( ? * + ^ $
 
-* Atoms and Concatenation: Bracket expressions
+* Bracket expressions
 
 Bracket expression matches any included character
 
@@ -102,7 +102,7 @@ Range
   [abcdef0-9]         a, b, c, d, e, f, or 0 through 9.
   [abc012-]           a, b, c, 0, 1, 2, -
 
-* Atoms and Concatenation: Qualifiers
+* Qualifiers
 
 Kleene Star: 0 or more
 
@@ -121,6 +121,8 @@ Interval expression: range
   ab{2}c              abbc
   ab{2,4}c            abbc, abbbc, abbbbc
   ab{3,}c             abbbc, abbbbc, abbbbbc, ...
+
+* Groups
 
 * Quick Reference: Features
 

@@ -66,70 +66,120 @@ Modifiers:
 
 Basic text matches as basic text
 
-  abc                 abc
+  abc                    abc
 
 Dot matches as any character
 
-  ab.                 aba, abb, abc, abd, abQ, ab0, ab!, ...
+  ab.                    aba, abb, abc, abd, abQ, ab0, ab!, ...
 
-Escape special characters
+Escape special characters . * + ? ( { |
 
-  abc\.               abc.
+  abc\.                  abc.
 
 Alternation
 
-  abc|xyz             abc, xyz
+  abc|xyz                abc, xyz
 
 Grouping
 
-  hello (world|kids)  hello world, hello kids
+  hello (world|kids)     hello world, hello kids
   
 * Bracket expressions
 
 Bracket expression matches any included character
 
-  ab[cde]             abc, abd, abe
+  ab[cde]                abc, abd, abe
 
 Inverted bracked expression matches any character not included
 
-  [^abcde]bc          fbc, gbc, hbc, !bc, Qbc, ...
-                  NOT abc, bbc, cbc, dbc, ebc
+  [^abcde]bc             fbc, gbc, hbc, !bc, Qbc, ...
+                     NOT abc, bbc, cbc, dbc, ebc
 
 Character classes
 
-  abc[[:lower:]]      abca, abcb, abcc, abcd, ...
-                  NOT abcA, abcB, abcC, abcD, ...
-  [[:upper:]]         A, B, C, D, E, F, G, H, ...
-                  NOT a, b, c, d, e, f, g, h, ...
+  abc[[:lower:]]         abca, abcb, abcc, abcd, ...
+                     NOT abcA, abcB, abcC, abcD, ...
+  [[:upper:]]            A, B, C, D, E, F, G, H, ...
+                     NOT a, b, c, d, e, f, g, h, ...
 
 Range
 
-  [a-z]               Only a through z, lowercase.
-  [abcdef0-9]         a, b, c, d, e, f, or 0 through 9.
-  [abc012-]           a, b, c, 0, 1, 2, -
+  [a-z]                  Only a through z, lowercase.
+  [abcdef0-9]            a, b, c, d, e, f, or 0 through 9.
+  [abc012-]              a, b, c, 0, 1, 2, -
 
 * Qualifiers
 
 Kleene Star: 0 or more
 
-  ab*c                ac, abc, abbc, abbbc, abbbbc, ...
-  abc(abc)*           abc, abcabc, abcabcabc, ...
+  ab*c                   ac, abc, abbc, abbbc, abbbbc, ...
+  abc(xyz)*              abc, abcxyz, abcxyzxyz, ...
 
 Plus: 1 or more
 
-  ab+c                abc, abbc, abbbc, abbbbc, ...
-  a(bc)+              abc, abcbc, abcbcbc, ...
+  ab+c                   abc, abbc, abbbc, abbbbc, ...
+  a(bc)+                 abc, abcbc, abcbcbc, ...
 
 Questionmark: 0 or 1
 
-  ab?c               ac, abc
-  a(bc|xy)?          a, abc, axy
+  ab?c                   ac, abc
+  a(bc|xy)?              a, abc, axy
+  hello( (world|kids))?  hello, hello world, hello kids
 
 Interval expression: range
 
-  ab{2}c              abbc
-  ab{2,4}c            abbc, abbbc, abbbbc
-  ab{3,}c             abbbc, abbbbc, abbbbbc, ...
+  ab{2}c                 abbc
+  ab{2,4}c               abbc, abbbc, abbbbc
+  ab{3,}c                abbbc, abbbbc, abbbbbc, ...
+
+* Truly Minimal Syntax
+
+Cut out the syntactic sugar:
+
+  x+                     xx*
+  x?                     (x|)
+  [xyz]                  (x|y|z)
+  .                      (a|b|c|d|e) ...
+  x{4}                   xxxx
+  x{3,}                  xxxx*
+  x{2,5}                 xx(x(x(x)?)?)?
+
+What remains:
+
+  x                      Character match
+  x*                     Kleene Star Repetition
+  xy                     Concatenation
+  x|y                    Alternation
+  x(y|z)                 Grouping
+
+Definitions:
+
+  Concatenation   if expr A matches string X and expr B matches string Y, expr AB matches string XY.
+  Alternation     if expr A matches string X and expr B matches string Y, expr A|B matches X or Y.
+
+* Greedy Matching, extra features
+
+Try to start as far to the left as possible
+
+  a+|b+ or b+|a+      xxxaaaaabbbbbbbb
+                         ^^^^^
+  a*                  ^
+
+Try to match as much as possible while maintaining match
+
+  [ab]+b              aaaaaaaabaabaaa
+                      ^^^^^^^^^^^^
+
+Non-greedy operators: ??, *?, +?
+
+Backtracking
+
+  ([a-z]+) ([a-z]+) \2 \1
+
+Pathalogical expressions
+
+  (.*a){20}
+  (a?){15}a{15}
 
 * Quick Reference: Features
 

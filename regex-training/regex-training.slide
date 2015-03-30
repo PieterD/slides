@@ -139,17 +139,71 @@ Interval expression: range
   ab{2,4}c               abbc, abbbc, abbbbc
   ab{3,}c                abbbc, abbbbc, abbbbbc, ...
 
+* Anchors
+
+Non-matching elements.
+
+Start of string:
+
+  ^abc                   abc, NOT xabc
+  ^[0-9]                 Find string that starts with a number
+
+End of string:
+
+  abc$                   abc, NOT abcx
+  [0-9]$                 Find string that ends with a number
+
+Empty line:
+
+  ^$
+
+Don't consume character, depending on implementation.
+
+  $\n^                   Match newline, in multiline mode
+
+* Greedy Matching
+
+Try to start as far to the left as possible
+
+  a+|b+ or b+|a+      xxxaaaaabbbbbbbb
+                         ^^^^^
+  a*                  ^
+
+Try to match as much as possible while maintaining match
+
+  [ab]+b              aaaaaaaabaabaaa
+                      ^^^^^^^^^^^^
+
+Match alternation in order
+
+  x|xx|xxx            xxxxxx
+                      ^
+  xxx|xx|x            ^^^
+
+* Extra features and worst-case scenarios
+
+Non-greedy operators: ??, *?, +?
+
+Backtracking
+
+  ([a-z]+) ([a-z]+) \2 \1
+
+Pathalogical expressions
+
+  (.*a){20}
+  (a?){15}a{15}
+
 * Truly Minimal Syntax
 
 Cut out the syntactic sugar:
 
-  x+                     xx*
-  x?                     (x|)
-  [xyz]                  (x|y|z)
-  .                      (a|b|c|d|e) ...
   x{4}                   xxxx
   x{3,}                  xxxx*
   x{2,5}                 xx(x(x(x)?)?)?
+  x?                     (x|)
+  x+                     xx*
+  [xyz]                  (x|y|z)
+  .                      (a|b|c|d|e) ...
 
 What remains:
 
@@ -163,30 +217,6 @@ Definitions:
 
   Concatenation   if expr A matches string X and expr B matches string Y, expr AB matches string XY.
   Alternation     if expr A matches string X and expr B matches string Y, expr A|B matches X or Y.
-
-* Greedy Matching, extra features
-
-Try to start as far to the left as possible
-
-  a+|b+ or b+|a+      xxxaaaaabbbbbbbb
-                         ^^^^^
-  a*                  ^
-
-Try to match as much as possible while maintaining match
-
-  [ab]+b              aaaaaaaabaabaaa
-                      ^^^^^^^^^^^^
-
-Non-greedy operators: ??, *?, +?
-
-Backtracking
-
-  ([a-z]+) ([a-z]+) \2 \1
-
-Pathalogical expressions
-
-  (.*a){20}
-  (a?){15}a{15}
 
 * Quick Reference: Features
 

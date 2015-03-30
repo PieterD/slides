@@ -6,6 +6,25 @@ Pieter Droogendijk
 Developer, CRI
 pieter@binky.org.uk
 
+* Welcome!
+
+Can everybody read this?
+
+Follow along:
+
+.link https://github.com/PieterD/slides https://github.com/PieterD/slides
+
+Playing with regular expressions:
+
+.link https://regex101.com/ https://regex101.com/
+
+Python is best; no delimiter.
+
+Modifiers:
+
+  g    Global:    all matches, not just one.
+  m    Multiline: ^ and $ match beginning and start of line.
+  x    eXtended:  don't match spaces, allow comments
 
 * Overview & History
 
@@ -49,18 +68,6 @@ pieter@binky.org.uk
 - Many flavours of regex, many implementations.
 
 * Minimal Extended Regex Syntax
-
-* Playing around with regular expressions
-
-.link https://regex101.com/ https://regex101.com
-
-Python is best; no delimiter.
-
-Modifiers:
-
-  g    Global:    all matches, not just one.
-  m    Multiline: ^ and $ match beginning and start of line.
-  x    eXtended:  don't match spaces, allow comments
 
 * Atoms, Concatenation, Alternation, Grouping
 

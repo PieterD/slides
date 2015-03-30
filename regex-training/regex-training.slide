@@ -62,7 +62,7 @@ Modifiers:
   m    Multiline: ^ and $ match beginning and start of line.
   x    eXtended:  don't match spaces, allow comments
 
-* Atoms and Concatenation
+* Atoms, Concatenation, Alternation, Grouping
 
 Basic text matches as basic text
 
@@ -76,8 +76,14 @@ Escape special characters
 
   abc\.               abc.
 
-Special characters: | . \ { ( ? * + ^ $
+Alternation
 
+  abc|xyz             abc, xyz
+
+Grouping
+
+  hello (world|kids)  hello world, hello kids
+  
 * Bracket expressions
 
 Bracket expression matches any included character
@@ -107,22 +113,23 @@ Range
 Kleene Star: 0 or more
 
   ab*c                ac, abc, abbc, abbbc, abbbbc, ...
+  abc(abc)*           abc, abcabc, abcabcabc, ...
 
 Plus: 1 or more
 
   ab+c                abc, abbc, abbbc, abbbbc, ...
+  a(bc)+              abc, abcbc, abcbcbc, ...
 
 Questionmark: 0 or 1
 
   ab?c               ac, abc
+  a(bc|xy)?          a, abc, axy
 
 Interval expression: range
 
   ab{2}c              abbc
   ab{2,4}c            abbc, abbbc, abbbbc
   ab{3,}c             abbbc, abbbbc, abbbbbc, ...
-
-* Groups
 
 * Quick Reference: Features
 
@@ -142,7 +149,7 @@ Qualifiers
 Compositors
 
   xy            standard concatenation
-  x|y           x or y
+  x|y           alternation (x or y)
 
 Anchors
 

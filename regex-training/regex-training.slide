@@ -218,6 +218,31 @@ Definitions:
   Concatenation   if expr A matches string X and expr B matches string Y, expr AB matches string XY.
   Alternation     if expr A matches string X and expr B matches string Y, expr A|B matches X or Y.
 
+* Substitution
+
+When substituting, subgroups are available
+
+  ^([0-9]+) ([0-9]+)$    a=\2 b=\1
+  123 987                a=987 b=123
+
+  ^[:blank:]*(.*)$       \1
+  __hello world!         hello world!
+
+  [0-9]                       (g modifier)
+  abcd1e2f3g             abcdefg
+
+Subgroups are counted by opening parens, unreached groups remain empty
+
+  (abc (def) (ghi) ((jkl)|mno(pqr)))
+  1    2     3     45        6
+
+Last match from subgroup is available
+
+  (([a-z]+) ?)+          \2
+  aap noot mies_         mies
+
+* Let's Dance
+
 * Quick Reference: Features
 
 Atoms

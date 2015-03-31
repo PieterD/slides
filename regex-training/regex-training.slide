@@ -240,10 +240,11 @@ Subgroups are counted by opening parens, unreached groups remain empty
   (abc (def) (ghi) ((jkl)|mno(pqr)))
   1    2     3     45        6
 
-Last match from subgroup is available
+Only last match from subgroup is available.
+Also, only matched text is substituted!
 
   (([a-z]+) ?)+          \2
-  aap noot mies_         mies
+  123aap noot mies_      123mies
 
 * Quick Reference: Features
 
@@ -326,24 +327,24 @@ Modifier: gmx (multi match, multi line, extended)
 Allow comments regularly
 
   ( [^#]+ )        # Match non-comment text
-  ( [#].* )?       # Comment (optional)
+  ( [#][^\n]* )?   # Comment (optional)
 
 Strings
 
   ( [^"#]+         # Match non-comment text, non-string
-    ( " [^"]+ " )? # Match entire string (optional)
+    ( " [^"]* " )? # Match entire string (optional)
   )
-  ( [#].* )?       # Comment (optional)
+  ( [#][^\n]* )?   # Comment (optional)
 
 With escapes
 
-  ( [^"#]+         # Match non-comment text, non-string start
+  ( [^"#]+         # Match non-comment text, non-string
     ( "            # Start of string
-      ( [^\\"]+    # Non-backslash, non-string end
+      ( [^\\"]*    # Non-backslash, non-string end
         ( \\ . )?  # Backslash followed by anything
       )+
       "            # End of string
     )?             # Match entire string (optional)
   )
-  ( [#].* )?       # Comment (optional)
+  ( [#][^\n]* )?   # Comment (optional)
   

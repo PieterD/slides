@@ -188,6 +188,10 @@ Backtracking
 
   ([a-z]+) ([a-z]+) \2 \1
 
+Anonymous (non-capturing) group
+
+  (?:match, but do not name)
+
 Pathalogical expressions
 
   (.*a){20}

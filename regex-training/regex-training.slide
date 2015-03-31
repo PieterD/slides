@@ -241,8 +241,6 @@ Last match from subgroup is available
   (([a-z]+) ?)+          \2
   aap noot mies_         mies
 
-* Let's Dance
-
 * Quick Reference: Features
 
 Atoms
@@ -295,6 +293,52 @@ Character classes
   [[:lower:]]   Lowercase alpha
   [[:upper:]]   Uppercase alpha
   
+* Let's Dance
 
+* Removing shell-style comments (problem)
 
+Input text
 
+  one
+  # two: comment
+  three #comment
+  four "string" #comment
+  five "string # not comment" #comment
+  six "string \" escaped # not" #comment
+
+Expected output
+
+  one
+  
+  three 
+  four "string" 
+  five "string # not comment" 
+  six "string \" escaped # not" 
+  
+Modifier: gmx (multi match, multi line, extended)
+
+* Removing shell-style comments (answer)
+
+Allow comments regularly
+
+  ^([^#]+)[#].*$
+
+Strings
+
+  ( [^"#]+         # Match non-string,non-comment chars
+    ( " [^"]+ " )? # Match entire string (optional)
+  )
+  ( [#].*$ )?      # Comment (optional)
+
+With escapes
+
+  ( [^"#]+         # Match non-string,non-comment chars
+    ( "            # Start of string
+      ( [^\\"]+    # Non-backslash, non-string end
+        ( \\ . )?  # Backslash followed by anything
+      )+
+      "            # End of string
+    )?             # Match entire string (optional)
+  )
+  ( [#].*$ )?      # Comment (optional)
+  

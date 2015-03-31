@@ -326,7 +326,7 @@ Allow comments regularly
 
 Strings
 
-  ( [^"#]+         # Match non-comment text, non-string start
+  ( [^"#]+         # Match non-comment text, non-string
     ( " [^"]+ " )? # Match entire string (optional)
   )
   ( [#].* )?       # Comment (optional)

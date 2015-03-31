@@ -321,18 +321,19 @@ Modifier: gmx (multi match, multi line, extended)
 
 Allow comments regularly
 
-  ^([^#]+)[#].*$
+  ( [^#]+ )        # Match non-comment text
+  ( [#].* )?       # Comment (optional)
 
 Strings
 
-  ( [^"#]+         # Match non-string,non-comment chars
+  ( [^"#]+         # Match non-comment text, non-string start
     ( " [^"]+ " )? # Match entire string (optional)
   )
-  ( [#].*$ )?      # Comment (optional)
+  ( [#].* )?       # Comment (optional)
 
 With escapes
 
-  ( [^"#]+         # Match non-string,non-comment chars
+  ( [^"#]+         # Match non-comment text, non-string start
     ( "            # Start of string
       ( [^\\"]+    # Non-backslash, non-string end
         ( \\ . )?  # Backslash followed by anything
@@ -340,5 +341,5 @@ With escapes
       "            # End of string
     )?             # Match entire string (optional)
   )
-  ( [#].*$ )?      # Comment (optional)
+  ( [#].* )?       # Comment (optional)
   

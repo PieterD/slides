@@ -79,7 +79,7 @@ Dot matches as any character
 
   ab.                    aba, abb, abc, abd, abQ, ab0, ab!, ...
 
-Escape special characters . * + ? ( { |
+Escape special characters . * + ? ( { | \
 
   abc\.                  abc.
 

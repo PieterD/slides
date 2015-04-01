@@ -298,7 +298,39 @@ Character classes
   [[:lower:]]   Lowercase alpha
   [[:upper:]]   Uppercase alpha
   
-* Let's Dance
+* Quick-start with sed
+
+Quick reference to using regular expressions with sed
+
+  sed -nre 's/[^0-9]*([0-9]+)/\1 /gp'
+
+Option -e: in-line regex
+Option -n: suppress default print
+BSD/MacOS: use -E instead of -r for extended regex
+
+Pattern flag /g: global match (match more than once)
+Pattern flag /p: print on match
+
+* Let's try it out
+
+* Parsing ISO 3339 date and time (problem)
+
+Input text
+
+  2015-04-01T18:00:00+02:00
+  2000-01-02T03:04:05-06:00
+  1999-12-31T23:59:59Z
+  1999-12-31t23:59:59.001z
+
+* Parsing ISO 3339 date and time (solution)
+
+  ([0-9]{4}) - (0[1-9]|1[012]) - ([012][0-9]|3[01])
+  [tT]
+  ([01][0-9]|2[0-3]) : ([0-5][0-9]) : ([0-5][0-9]|60)
+  ( \. [0-9]+ )?
+  ( [zZ]
+  | [+-] [01][0-9] : [0-5][0-9]
+  )
 
 * Removing shell-style comments (problem)
 
@@ -320,9 +352,9 @@ Expected output
   five "string # not comment" 
   six "string \" escaped # not" 
   
-Modifier: gmx (multi match, multi line, extended)
+Modifier: gx (multi match, extended)
 
-* Removing shell-style comments (answer)
+* Removing shell-style comments (solution)
 
 Allow comments regularly
 
@@ -347,4 +379,3 @@ With escapes
     )?             # Match entire string (optional)
   )
   ( [#][^\n]* )?   # Comment (optional)
-  

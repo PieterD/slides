@@ -57,7 +57,6 @@ Modifiers:
 * Some history
 
 - Stephen Cole Kleene (1957): Mathematical framework, Regular Sets
-- SNOBOL4 (1967)
 - Ken Thompson (1968): QED
 - Bell Labs (1970): ed, sed, awk, vi, emacs
 - Henry Spencer (1986): Perl, Tcl, PostgreSQL

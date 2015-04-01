@@ -156,10 +156,6 @@ Empty line:
 
   ^$
 
-Don't consume character, depending on implementation.
-
-  $\n^                   Match newline, in multiline mode
-
 * Greedy Matching
 
 Try to start as far to the left as possible
@@ -172,6 +168,7 @@ Try to match as much as possible while maintaining match
 
   [ab]+b              aaaaaaaabaabaaa
                       ^^^^^^^^^^^^
+  a*$                             ^^^
 
 Match alternation in order
 

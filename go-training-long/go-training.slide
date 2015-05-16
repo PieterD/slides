@@ -1,0 +1,140 @@
+The Go Programming Language
+A modern systems language
+20:17 11 Feb 2015
+
+Pieter Droogendijk
+Developer, CRI
+pieter@binky.org.uk
+
+
+* What's on the menu today
+
+- (30m) History, feature buzz-word overview
+- (30m) Basic syntax, Development Environment: GOROOT, GOPATH, build, fmt, get
+- (60m) Type system, Interfaces
+- (60m) Concurrency, closures, defer, panic, recover
+- (30m) Lunch?
+- (30m) Documentation: How to make it, where to find it: go doc, standard library
+- (30m) Testing & Benchmarking
+- (60m) Tools: Coverage, generate, profiling, formatting, build tags, cross compiling
+- (60m) Using it all: build a web server
+
+If we have time, Runtime Reflection.
+Not covered: cgo.
+
+
+* Language history & overview
+
+* A little bit of history
+
+Started in 2007 as a 20% project at Google:
+
+- Ken Thompson (B, Unix, Plan 9, Regular Expressions, Ed, UTF-8)
+- Rob Pike (Plan 9, Acme, Blit, Sam, UTF-8)
+- Robert Griesemer
+
+Joined in 2008:
+
+- Ian Lance Taylor (Binutils, GCC)
+- Russ Cox (Plan 9)
+
+Open Sourced in November 10, 2009
+
+- Andrew Gerrand
+- Brad Fitzpatrick (Livejournal, memcached, OpenID, Camlistore)
+
+Go 1.0 in March 2012
+
+
+* The First Commits
+
+7d7c6a9 - (43 years ago) hello, world - Brian Kernighan
+0bb0b61 - (41 years ago) convert to C - Brian Kernighan
+0744ac9 - (27 years ago) convert to Draft-Proposed ANSI C - Brian Kernighan
+d82b11e - (27 years ago) last-minute fix: convert to ANSI C - Brian Kernighan
+18c5b48 - (7 years ago) Go spec starting point. - Robert Griesemer
+ 
+
+* Feature (buzz-word bingo)
+
+- Compiled (i386, x64, Arm) (Linux, OS X, FreeBSD, Windows, NaCl)
+- Very simple type system, strong & static
+- Memory-safe
+- Concurrent
+- Closures
+- Garbage collected
+- High-quality standard library
+- Full run-time reflection
+- Simple build system
+- Excellent tools
+- Compiles very fast
+
+
+* Not Features (buzz-word bingo 2: electric boogaloo)
+
+- Generics
+- Parametric polymorphism
+- Operator overloading
+- Function overloading
+- Exceptions (sort of)
+- Inheritance
+
+
+* Where it's being used
+
+- Google (App Engine, Kubernetes)
+- DotCloud (Docker, Packer)
+- Heroku (Doozer)
+- CoreOS (Etcd, Raft)
+- Bol.com, Iron.io, Bit.ly, Canonical, CloudFlare, Dropbox, Getty, Github, pool.ntp.org, Tumblr, Soundcloud, Twitch, Zynga Apcera, MongoDB, Wercker
+
+https://github.com/golang/go/wiki/GoUsers
+
+
+* So what's it for?
+
+What it does well:
+
+- Paas & Iaas
+- Servers
+- Tools
+
+What it doesn't do so well:
+
+- Scientific programming
+- Real-time programming
+- Operating systems
+- Graphical user interface
+
+
+* Basic syntax and the development environment
+
+* The go tool, the workspace, GOROOT & GOPATH
+
+Global configuration:
+
+  export GOROOT=$HOME/go
+  export GOPATH=$HOME/git/go
+  export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+Get example project:
+
+  go get github.com/PieterD/slides/hello_world
+
+Directory structure:
+
+  bin/
+    hello_world
+  pkg/
+    linux_amd64/github.com/PieterD/slides
+      reverse.a
+  src/
+    github.com/PieterD/slides/hello_world/
+      code.go
+    github.com/PieterD/slides/reverse/
+      reverse.go
+
+* Hello, world!
+
+.play hello_world/code.go
+.code reverse/reverse.go

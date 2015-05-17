@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/PieterD/slides/reverse"
+	"github.com/PieterD/slides/go-training/reverse"
 )
 
 func main() {

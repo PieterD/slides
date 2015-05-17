@@ -92,7 +92,12 @@ What it doesn't do so well:
 - Graphical user interface
 
 
-* The development environment
+* Hello world, and the development environment
+
+* Hello, world!
+
+.play hello_world/code.go
+.code reverse/reverse.go
 
 * The go tool, the workspace, GOROOT & GOPATH
 
@@ -122,7 +127,3 @@ Directory structure:
 pkg/darwin_amd64/github.com/PieterD/slides/go-training/reverse.a 
 
 
-* Hello, world!
-
-.play hello_world/code.go
-.code reverse/reverse.go

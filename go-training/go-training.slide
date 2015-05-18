@@ -52,6 +52,7 @@ d82b11e - (27 years ago) last-minute fix: convert to ANSI C - Brian Kernighan
 - Simple build system
 - Excellent tools
 - Compiles very fast
+- Built-in testing
 
 
 * Not Features (buzz-word bingo 2: electric boogaloo)
@@ -83,6 +84,7 @@ What it does well:
 - Servers
 - Tools
 - Web
+- Big software
 
 What it doesn't do so well:
 
@@ -99,7 +101,7 @@ What it doesn't do so well:
 .play hello_world/hello.go
 .code reverse/reverse.go
 
-* The go tool, the workspace, GOROOT & GOPATH
+* The workspace, GOROOT & GOPATH
 
 Global configuration:
 
@@ -124,4 +126,24 @@ Directory structure:
     darwin_amd64/github.com/PieterD/slides/go-training/hello-world
       reverse.a
 
+* The go tool
 
+Fetch, compile and install a program or library recursively
+
+  go get <url>
+
+Build a project
+
+  go build
+
+Run all tests
+
+  go test
+
+Lint-like static code analysis
+
+  go vet
+
+Format code into the standard shape
+
+  go fmt

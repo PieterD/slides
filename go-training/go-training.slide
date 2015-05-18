@@ -39,7 +39,7 @@ d82b11e - (27 years ago) last-minute fix: convert to ANSI C - Brian Kernighan
 18c5b48 - (7 years ago) Go spec starting point. - Robert Griesemer
  
 
-* Feature (buzz-word bingo)
+* Features (buzz-word bingo)
 
 - Compiled (i386, x64, Arm) (Linux, OS X, FreeBSD, Windows, NaCl)
 - Very simple type system, strong & static
@@ -123,7 +123,5 @@ Directory structure:
       code.go
     github.com/PieterD/slides/go-training/reverse/
       reverse.go
-
-pkg/darwin_amd64/github.com/PieterD/slides/go-training/reverse.a 
 
 

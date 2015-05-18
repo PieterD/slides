@@ -70,7 +70,7 @@ d82b11e - (27 years ago) last-minute fix: convert to ANSI C - Brian Kernighan
 - DotCloud (Docker, Packer)
 - Heroku (Doozer)
 - CoreOS (Etcd, Raft)
-- Bol.com, Iron.io, Bit.ly, Canonical, CloudFlare, Dropbox, Getty, Github, pool.ntp.org, Tumblr, Soundcloud, Twitch, Zynga Apcera, MongoDB, Wercker
+- Bol.com, Iron.io, Bit.ly, Canonical, CloudFlare, Dropbox, Getty, Github, pool.ntp.org, Tumblr, Soundcloud, Twitch, Zynga Apcera, MongoDB, Wercker, Github Large File Storage
 
 https://github.com/golang/go/wiki/GoUsers
 
@@ -96,7 +96,7 @@ What it doesn't do so well:
 
 * Hello, world!
 
-.play hello_world/code.go
+.play hello_world/hello.go
 .code reverse/reverse.go
 
 * The go tool, the workspace, GOROOT & GOPATH
@@ -113,15 +113,15 @@ Get example project:
 
 Directory structure:
 
+  src/
+    github.com/PieterD/slides/go-training/hello_world/
+      hello.go
+    github.com/PieterD/slides/go-training/reverse/
+      reverse.go
   bin/
     hello_world
   pkg/
     darwin_amd64/github.com/PieterD/slides/go-training/hello-world
       reverse.a
-  src/
-    github.com/PieterD/slides/go-training/hello_world/
-      code.go
-    github.com/PieterD/slides/go-training/reverse/
-      reverse.go
 
 

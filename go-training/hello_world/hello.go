@@ -7,6 +7,5 @@ import (
 )
 
 func main() {
-	greeting := "!dlrow ,olleH"
-	fmt.Println(reverse.Reverse(greeting))
+	fmt.Println(reverse.Reverse("!dlrow ,olleH"))
 }

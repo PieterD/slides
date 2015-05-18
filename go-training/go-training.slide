@@ -147,3 +147,26 @@ Lint-like static code analysis
 Format code into the standard shape
 
   go fmt
+
+* And much more
+
+Run all code generation
+
+  go generate
+
+Automated code manipulation
+
+  go fix
+
+Code coverage
+
+  go test -cover
+
+Various tools (compilers, linkers, etc)
+
+  go tool
+
+Code coverage report
+
+  go test -coverprofile=something.cover && go tool cover -html=something.cover
+

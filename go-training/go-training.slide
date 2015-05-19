@@ -43,8 +43,8 @@ Pain points:
 - Errors are special
 - Each programmer has their own "style", and all others are the devil's work
 - Each programmer uses a different subset of the language
-- Hard to write tools for the language
 - Concurrency feels like an uphill battle, or is outright impossible
+- Breaking compatibility between versions
 
 * Simplicity is fundamental
 
@@ -395,3 +395,15 @@ String concatenation
 * Example: sort
 
 .play sort/sort.go
+
+* Panic, Defer and Recover
+
+* Panic
+
+Runtime panic
+
+.play panic/runtime.go
+
+Voluntarily panicing
+
+.play panic/voluntary.go

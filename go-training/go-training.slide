@@ -158,15 +158,27 @@ Automated code manipulation
 
   go fix
 
-Code coverage
-
-  go test -cover
-
-Various tools (compilers, linkers, etc)
+Available tools
 
   go tool
+
+Help on the go tool
+
+  go help
 
 Code coverage report
 
   go test -coverprofile=something.cover && go tool cover -html=something.cover
 
+* Basic Syntax
+
+* Types and values
+
+Declaration & initialization
+
+  var zero int64
+  var a int = 5
+  var b, c int = 6, 7
+  var d = 8
+  e := 9
+  var f, g, h = 0.5, 3, "hello"

@@ -182,3 +182,76 @@ Declaration & initialization
   var d = 8
   e := 9
   var f, g, h = 0.5, 3, "hello"
+
+Available built-in types
+
+  int, uint, uintptr
+  int8, int16, int32, int64
+  uint8, uint16, uint32, uint64
+  float32, float64, complex64, complex128
+  byte, rune, string
+  bool
+  error
+
+* More interesting types
+
+Variable declaration & initialization
+
+  var pointer   *int         = new(int)
+  var array     [5]int       = [5]int{1,2,3,4,5}
+  var slice     []int        = make([]int, 10)
+  var hashtable map[int]bool = make(map[int]bool)
+  var channel   chan int     = make(chan int)
+
+Function types
+
+  var function1 func(int, string) bool
+  var function2 func(int, string) (bool, error)
+
+More complicated type signatures read from left to right
+
+  var complicated [15]*chan map[string] []func(int) string
+
+* Type declarations and methods
+
+Simple declarations
+
+  type MyBool  bool
+  type MySlice []int
+  type MyFunc  func(int, string) bool
+
+Methods
+
+  func (b MyBool) String() string {
+     return fmt.Sprintf("%t", b)
+  }
+
+  func (b *MyBool) Set(set bool) {
+    *b = set
+  }
+
+* Structs
+
+Declaring a struct type
+
+  type MyStruct struct {
+    Name string
+    Age  int
+    Err  error
+    List []string
+    Send chan bool
+    Anon struct {
+      Something float32
+      Else      []byte
+    }
+  }
+
+Declaring and initializing struct variables
+
+  var ms MyStruct
+  ms := MyStruct{
+    Name: "Pieter Droogendijk",
+    Age: 32,
+  }
+
+

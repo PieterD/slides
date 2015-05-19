@@ -207,6 +207,28 @@ Reducing to concrete types
   var fBad  float64    = 9 + 0.5 + 0.2i
   var cGood complex128 = 9 + 0.5 + 0.2i
 
+* Conversions
+
+Convert constants if you need to
+
+  i := int32(99)
+
+Numeric types convert to each other
+
+  i8 := byte(i)
+  f := float64(i8)
+  i = int32(f)
+
+Conversions to and from strings
+
+  s := "hello"
+  b := []byte(s)
+  s = string(b)
+  r := []rune('一', '二', '三')
+  s = string(r)      // "一二三"
+  s = string(0x266c) // "♬"
+  s = string('Σ')    // "Σ"
+
 * More interesting types
 
 Variable declaration & initialization

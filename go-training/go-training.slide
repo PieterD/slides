@@ -30,18 +30,9 @@ Open Sourced in November 10, 2009
 Go 1.0 in March 2012
 
 
-* The First Commits
-
-7d7c6a9 - (43 years ago) hello, world - Brian Kernighan
-0bb0b61 - (41 years ago) convert to C - Brian Kernighan
-0744ac9 - (27 years ago) convert to Draft-Proposed ANSI C - Brian Kernighan
-d82b11e - (27 years ago) last-minute fix: convert to ANSI C - Brian Kernighan
-18c5b48 - (7 years ago) Go spec starting point. - Robert Griesemer
- 
-
 * Features (buzz-word bingo)
 
-- Compiled (i386, x64, Arm) (Linux, OS X, FreeBSD, Windows, NaCl)
+- Compiled (i386, x64, Arm, Ppc) (Linux, OS X, FreeBSD, Windows, NaCl, Solaris)
 - Very simple type system, strong & static
 - Memory-safe
 - Garbage collected
@@ -63,6 +54,7 @@ d82b11e - (27 years ago) last-minute fix: convert to ANSI C - Brian Kernighan
 - Function overloading
 - Exceptions
 - Inheritance
+- Pointer arithmetic
 
 
 * Where it's being used
@@ -170,9 +162,9 @@ Code coverage report
 
   go test -coverprofile=something.cover && go tool cover -html=something.cover
 
-* Basic Syntax
+* The Type System
 
-* Types and values
+* Variable declaration
 
 Declaration & initialization
 
@@ -183,7 +175,7 @@ Declaration & initialization
   e := 9
   var f, g, h = 0.5, 3, "hello"
 
-Available built-in types
+Available built-in primitive types
 
   int, uint, uintptr
   int8, int16, int32, int64
@@ -193,20 +185,48 @@ Available built-in types
   bool
   error
 
+* Constants
+
+Numerical constants
+
+  var number1 = 91532623671
+  var number2 = 0xBadFaceDeadBeef
+  var number3 = 0755
+  var float1  = 111.56135161351
+  var float2  = 6.0221413e+23
+  var cmplx   = 111.222+999.888i
+  var str1    = "Hello, world!"
+  var str2    = `Hello, "world".`
+  var rune1   = '♬'
+
+Reducing to concrete types
+
+  var iGood int        = 9
+  var iBad  int        = 9 + 0.5
+  var fGood float64    = 9 + 0.5
+  var fBad  float64    = 9 + 0.5 + 0.2i
+  var cGood complex128 = 9 + 0.5 + 0.2i
+
 * More interesting types
 
 Variable declaration & initialization
 
-  var pointer   *int         = new(int)
+  var number    int          = 9
+  var pointer1  *int         = &number
+  var pointer2  *int         = new(int)
   var array     [5]int       = [5]int{1,2,3,4,5}
   var slice     []int        = make([]int, 10)
   var hashtable map[int]bool = make(map[int]bool)
   var channel   chan int     = make(chan int)
 
-Function types
+Function variable and closure
 
-  var function1 func(int, string) bool
-  var function2 func(int, string) (bool, error)
+  var function  func(rune, string) bool = func(i rune, s string) bool {
+    if string(r) == s {
+      return true
+    }
+    return false
+  }
 
 More complicated type signatures read from left to right
 
@@ -218,6 +238,7 @@ Simple declarations
 
   type MyBool  bool
   type MySlice []int
+  type MyHash  [32]byte
   type MyFunc  func(int, string) bool
 
 Methods
@@ -226,9 +247,15 @@ Methods
      return fmt.Sprintf("%t", b)
   }
 
-  func (b *MyBool) Set(set bool) {
+  func (b *MyBool) Set(set bool) (old bool) {
+    old = *b
     *b = set
+    return
   }
+
+Calling methods
+
+  b.Set(true) // Doesn't matter if b is MyBool or *MyBool
 
 * Structs
 
@@ -237,9 +264,6 @@ Declaring a struct type
   type MyStruct struct {
     Name string
     Age  int
-    Err  error
-    List []string
-    Send chan bool
     Anon struct {
       Something float32
       Else      []byte
@@ -248,10 +272,57 @@ Declaring a struct type
 
 Declaring and initializing struct variables
 
-  var ms MyStruct
   ms := MyStruct{
     Name: "Pieter Droogendijk",
-    Age: 32,
+    Age:  32,
   }
+
+Accessing fields
+
+  myName := ms.Name // Doesn't matter if ms is MyStruct or *MyStruct
+
+* Slices
+
+Slice values are triplets; pointer, length, capacity
+
+  slice1 := make([]int, 5)
+  slice2 := []string{
+    "string1",
+    "string2",
+  }
+  slice3 := make([]float32, 8, 128)
+  var sliceEmpty []bool = nil
+
+Length (and Capacity) can be queried
+
+  for i := 0; i < len(slice3); i++ {
+    something(slice3[i])
+  }
+
+Indexing and slicing
+
+  str := "Oh, hello, world!" // string is secretly an immutable []byte
+  chr := str[2]    // ','
+  hw  := str[0:2]  // "Oh"
+  hw   = str[4:17] // "hello, world!"
+
+* Slices (cont.)
+
+Appending
+
+  oldSlice := []byte("Hello, world")
+  newSlice := append(oldSlice, '!', '!', '!')
+
+Append a slice to another slice
+
+  oldSlice = []int{0,1,2,3}
+  addSlice = []int{9,8,7,6}
+  newSlice = append(oldSlice, addSlice...) // [0,1,2,3,9,8,7,6]
+
+String concatenation
+
+  str1 := "Hello"
+  str2 := "world"
+  return str1 + ", " + str2
 
 

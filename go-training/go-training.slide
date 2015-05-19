@@ -30,29 +30,50 @@ Open Sourced in November 10, 2009
 Go 1.0 in March 2012
 
 
+* Why Go exists
+
+The computing landscape has changed. Multicore CPUs and concurrency models, grid computing, ubiquitous networking, and even the web.
+
+The big languages, Java, C, C++, Python and Perl, are old and were not designed with these things in mind.
+
+Pain points:
+
+- Slow builds
+- Runaway dependencies
+- Errors are special
+- Each programmer has their own "style", and all others are the devil's work
+- Each programmer uses a different subset of the language
+- Hard to write tools for the language
+- Concurrency feels like an uphill battle, or is outright impossible
+
+* Simplicity is fundamental
+
+.image images/blow_it_up.jpg
+
+Simplicity cannot be added later, nor can it be gained by taking things away.
+The way to gain simplicity is to have never added them in the first place.
+
 * Features (buzz-word bingo)
 
-- Compiled (i386, x64, Arm, Ppc) (Linux, OS X, FreeBSD, Windows, NaCl, Solaris)
+- Procedural
+- Compiled
 - Very simple type system, strong & static
-- Memory-safe
+- Object Oriented, in the most basic sense
 - Garbage collected
 - Concurrent
-- Closures
-- High-quality standard library
-- Full run-time reflection
+- Memory-safe
 - Simple build system
-- Excellent tools
-- Compiles very fast
 - Built-in testing
+- Compiles very fast
+- Full run-time reflection
+- Exceptions, kind of
 
 
 * Not Features (buzz-word bingo 2: electric boogaloo)
 
-- Generics
-- Parametric polymorphism
+- Generics / Type Parameters / Parametric polymorphism
 - Operator overloading
-- Function overloading
-- Exceptions
+- Function / Method overloading
 - Inheritance
 - Pointer arithmetic
 
@@ -166,15 +187,6 @@ Code coverage report
 
 * Variable declaration
 
-Declaration & initialization
-
-  var zero int64
-  var a int = 5
-  var b, c int = 6, 7
-  var d = 8
-  e := 9
-  var f, g, h = 0.5, 3, "hello"
-
 Available built-in primitive types
 
   int, uint, uintptr
@@ -184,6 +196,15 @@ Available built-in primitive types
   byte, rune, string
   bool
   error
+
+Declaration & initialization
+
+  var zero int64
+  var a int = 5
+  var b, c int = 6, 7
+  var d = 8
+  e := 9
+  var f, g, h = 0.5, 3, "hello"
 
 * Constants
 
@@ -347,4 +368,30 @@ String concatenation
   str2 := "world"
   return str1 + ", " + str2
 
+* Interfaces
 
+  import (
+    "os"
+    "io/ioutil"
+  )
+
+  type Thing {
+    Read([]byte) (int, error)
+    Close() error
+  }
+
+  func NewThing(filename string) (Thing, error) {
+    handle, err := os.Open(filename)
+    if err != nil {
+      return nil, fmt.Errorf("Error opening file: %v", err)
+    }
+    return handle, nil
+  }
+  
+  func ReadThing(thing Thing) ([]byte, error) {
+    return ioutil.ReadAll(thing)
+  }
+
+* Example: sort
+
+.play sort/sort.go

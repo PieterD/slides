@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 // START OMIT
 func main() {
@@ -9,14 +12,14 @@ func main() {
 }
 
 func ZhuLiDoTheThing() {
-	defer PrintPanic() // HL
+	defer logPanic() // HL
 	panic("Panic, world!")
 }
 
-func PrintPanic() {
+func logPanic() {
 	i := recover() // HL
 	if i != nil {
-		fmt.Printf("recovered: %v\n", i)
+		log.Printf("recovered: %v\n", i)
 	}
 }
 

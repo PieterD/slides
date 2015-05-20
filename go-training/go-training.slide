@@ -419,8 +419,35 @@ Defers are then executed in reverse order.
 
 .code panic/copy.go /START OMIT/,/END OMIT/
 
+* Checking the return value within a deferred function
+
+  func PutItThere(s string, filename string) (err error) {
+    handle, err := os.Create(filename)
+    if err != nil {
+      return err
+    }
+    defer func() {
+      ie := handle.Close()
+      if err == nil {
+        err = ie
+      }
+      if err != nil {
+        // Try to remove the file, do not check error
+        os.Remove(filename)
+      }
+    }()
+    
+    _, err = io.WriteString(handle, s)
+    return err
+  }
+
 * Recover
 
 Recover stops a panic and returns the panic value, but only works from deferred functions.
 
 .play panic/recover.go /START OMIT/,/END OMIT/
+
+* Changing the return value
+
+.play panic/capture.go /START OMIT/,/END OMIT/
+

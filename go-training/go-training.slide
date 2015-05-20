@@ -537,3 +537,10 @@ But what if we don't want to wait forever?
 * Example: Get things concurrently, with timeout, cleanup and wait
 
 .play chan/fullclean.go /START OMIT/,/END OMIT/
+
+* Would you like to know more?
+
+.link https://golang.org
+.link https://golang.org/doc/effective_go.html
+.link https://github.com/golang/go
+.link https://golang.org/ref/spec

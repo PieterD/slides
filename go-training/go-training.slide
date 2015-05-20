@@ -261,7 +261,7 @@ Variable declaration & initialization
 
   var number    int          = 9
   var pointer1  *int         = &number
-  var pointer2  *int         = new(int)
+  var pointer2  *Anything    = new(Anything)
   var array     [5]int       = [5]int{1,2,3,4,5}
   var slice     []int        = make([]int, 10)
   var hashtable map[int]bool = make(map[int]bool)

@@ -492,6 +492,7 @@ Sending
 Receiving
 
   str := <-recvOnly
+  str, ok := <-recvOnly
 
 Closing
 
@@ -511,6 +512,7 @@ Ready multiple channel operations, but only one may finish.
     case senderChan <-something
       log.Printf("I sent a thing")
     case <-stopSendingSignal:
+      close(senderChan)
       senderChan = nil
   }
 

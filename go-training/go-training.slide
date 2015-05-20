@@ -161,7 +161,7 @@ Format code into the standard shape
 
   go fmt
 
-* And much more
+* And more go tool
 
 Run all code generation
 
@@ -183,7 +183,9 @@ Code coverage report
 
   go test -coverprofile=something.cover && go tool cover -html=something.cover
 
+
 * The Type System
+
 
 * Variable declaration
 
@@ -210,15 +212,17 @@ Declaration & initialization
 
 Numerical constants
 
-  var number1 = 91532623671
-  var number2 = 0xBadFaceDeadBeef
-  var number3 = 0755
-  var float1  = 111.56135161351
-  var float2  = 6.0221413e+23
-  var cmplx   = 111.222+999.888i
-  var str1    = "Hello, world!"
-  var str2    = `Hello, "world".`
-  var rune1   = '♬'
+  const (
+    number1 = 91532623671
+    number2 = 0xBadFaceDeadBeef
+    number3 = 0755
+    float1  = 111.56135161351
+    float2  = 6.0221413e+23
+    cmplx   = 111.222+999.888i
+    str1    = "Hello, world!"
+    str2    = `Hello, "world".`
+    rune1   = '♬'
+  )
 
 Reducing to concrete types
 
@@ -322,7 +326,7 @@ Declaring and initializing struct variables
 
 Accessing fields
 
-  myName := ms.Name // Doesn't matter if ms is MyStruct or *MyStruct
+  ms.Name = "Pieter Droogendijk" // Doesn't matter if ms is MyStruct or *MyStruct
 
 * Slices
 
@@ -344,7 +348,7 @@ Length (and Capacity) can be queried
 
 Indexing and slicing
 
-  str := "Oh, hello, world!" // string is secretly an immutable []byte
+  str := "Oh, hello, world!"
   chr := str[2]    // ','
   hw  := str[0:2]  // "Oh"
   hw   = str[4:17] // "hello, world!"

@@ -406,8 +406,21 @@ String concatenation
 
 Runtime panic
 
-.play panic/runtime.go
+.play panic/runtime.go /START OMIT/,/END OMIT/
 
 Voluntarily panicing
 
-.play panic/voluntary.go
+.play panic/voluntary.go /START OMIT/,/END OMIT/
+
+* Defer
+
+Defer a function or method call until after the function finishes.
+Defers are then executed in reverse order.
+
+.code panic/copy.go /START OMIT/,/END OMIT/
+
+* Recover
+
+Recover stops a panic and returns the panic value, but only works from deferred functions.
+
+.play panic/recover.go /START OMIT/,/END OMIT/

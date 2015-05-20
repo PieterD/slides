@@ -5,6 +5,7 @@ A modern systems language
 Pieter Droogendijk
 Developer, CRI
 pieter@binky.org.uk
+https://github.com/PieterD
 
 
 * Language history & overview
@@ -451,3 +452,86 @@ Recover stops a panic and returns the panic value, but only works from deferred 
 
 .play panic/capture.go /START OMIT/,/END OMIT/
 
+
+* Concurrency
+
+* Goroutines
+
+Sequential:
+
+  func DoTheThing() {
+    LongRunningThing()
+    AnotherLongRunningThing()
+  }
+
+Fire-and-forget, concurrently:
+
+  func DoTheThing() {
+    go LongRunningThing()
+    go AnotherLongRunningThing()
+  }
+
+But there's a problem:
+
+  func main() {
+    DoTheThing()
+  }
+
+* Channels
+
+Declaring and creating channels
+
+  ch := make(chan string)
+  var recvOnly <-chan string = ch
+  var sendOnly chan<- string = ch
+
+Sending
+
+  sendOnly <- "Hello!"
+
+Receiving
+
+  str := <-recvOnly
+
+Closing
+
+  close(sendOnly)
+
+Share by communicating, don't communicate by sharing.
+
+* Select
+
+Ready multiple channel operations, but only one may finish.
+
+  select {
+    case request := <-requestChan:
+      handleRequest(request)
+    case <-killChan:
+      return
+    case senderChan <-something
+      log.Printf("I sent a thing")
+    case <-stopSendingSignal:
+      senderChan = nil
+  }
+
+* Example: Get things sequentially
+
+.play chan/sequential.go /START OMIT/,/END OMIT/
+
+* Example: Get things concurrently
+
+.play chan/chanonly.go /START OMIT/,/END OMIT/
+
+But what if we don't want to wait forever?
+
+* Example: Get things concurrently, with timeout
+
+.play chan/after.go /START OMIT/,/END OMIT/
+
+* Example: Get things concurrently, with timeout, and cleanup
+
+.play chan/clean.go /START OMIT/,/END OMIT/
+
+* Example: Get things concurrently, with timeout, cleanup and wait
+
+.play chan/fullclean.go /START OMIT/,/END OMIT/

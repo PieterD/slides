@@ -1,0 +1,4 @@
+explain arrays FIRST, then slices
+
+from system, up to go
+or from dynamic, down to go?

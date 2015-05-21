@@ -380,7 +380,7 @@ String concatenation
     "io/ioutil"
   )
 
-  type Thing {
+  type Thing interface {
     Read([]byte) (int, error)
     Close() error
   }
